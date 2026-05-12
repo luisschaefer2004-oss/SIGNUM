@@ -376,7 +376,7 @@ export default function SIGNUMWebsite() {
             <h1 className="w-hero-title">Trainiere wie<br/><em>ein Professional.</em><br/>Zertifiziert von SIGNUM.</h1>
             <p className="w-hero-sub">Das vollständige Coaching-System für Tennistrainer – von der Übungsbibliothek bis zum Matchday-Protokoll.</p>
             <div className="w-hero-actions">
-              <button className="w-btn-primary" onClick={() => scrollTo("preise")}>Starter Pack · 19€</button>
+              <button className="w-btn-primary" onClick={() => <button className="w-btn-primary" onClick={() => window.open('https://signum7.gumroad.com/l/ucqkbq')}>Starter Pack · 19€</button>}>Starter Pack · 19€</button>
               <button className="w-btn-ai" onClick={() => setBotOpen(true)}>AI Coach kostenlos testen</button>
               <button className="w-btn-ghost" onClick={() => scrollTo("produkt")}>Mehr erfahren</button>
             </div>

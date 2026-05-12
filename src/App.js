@@ -209,32 +209,55 @@ function ShopPage() {
 }
 
 function ImpressumPage() {
+  const Block = ({ label, children }) => (
+    <div style={{ padding: "40px 0", borderBottom: "1px solid #1a1a1a" }}>
+      <div style={{ fontSize: 10, letterSpacing: "0.25em", textTransform: "uppercase", color: "rgba(255,255,255,0.25)", marginBottom: 16 }}>{label}</div>
+      {children}
+    </div>
+  );
+  const T = ({ children, small }) => (
+    <p style={{ fontSize: small ? 13 : 14, color: small ? "rgba(255,255,255,0.35)" : "rgba(255,255,255,0.55)", lineHeight: small ? 1.8 : 2 }}>{children}</p>
+  );
   return (
     <div style={{ animation: "fadeIn 0.4s ease", maxWidth: 640 }}>
       <div style={{ padding: "64px 0 48px", borderBottom: "1px solid #1a1a1a" }}>
         <div style={{ fontSize: 10, letterSpacing: "0.4em", textTransform: "uppercase", color: "rgba(255,255,255,0.25)", marginBottom: 20 }}>Rechtliches</div>
-        <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 48, fontWeight: 600, color: "#fff" }}>Impressum</h1>
+        <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 48, fontWeight: 600, color: "#fff", marginBottom: 12 }}>Impressum</h1>
+        <p style={{ fontSize: 13, color: "rgba(255,255,255,0.3)" }}>Angaben gemäß § 5 TMG</p>
       </div>
-      <div style={{ padding: "48px 0", borderBottom: "1px solid #1a1a1a" }}>
-        <div style={{ fontSize: 10, letterSpacing: "0.25em", textTransform: "uppercase", color: "rgba(255,255,255,0.25)", marginBottom: 16 }}>Angaben gemäß § 5 TMG</div>
-        <p style={{ fontSize: 14, color: "rgba(255,255,255,0.55)", lineHeight: 2 }}>
-          [Dein vollständiger Name]<br/>
-          [Deine Straße und Hausnummer]<br/>
-          [PLZ und Ort]<br/>
+
+      <Block label="Betreiber">
+        <T>
+          Luis Schäfer<br/>
+          Otto-Hahn-Str. 11<br/>
+          67165 Waldsee<br/>
           Deutschland
-        </p>
-      </div>
-      <div style={{ padding: "48px 0", borderBottom: "1px solid #1a1a1a" }}>
-        <div style={{ fontSize: 10, letterSpacing: "0.25em", textTransform: "uppercase", color: "rgba(255,255,255,0.25)", marginBottom: 16 }}>Kontakt</div>
-        <p style={{ fontSize: 14, color: "rgba(255,255,255,0.55)", lineHeight: 2 }}>
-          E-Mail: signum.coaching@gmail.com
-        </p>
-      </div>
-      <div style={{ padding: "48px 0" }}>
-        <div style={{ fontSize: 10, letterSpacing: "0.25em", textTransform: "uppercase", color: "rgba(255,255,255,0.25)", marginBottom: 16 }}>Haftungsausschluss</div>
-        <p style={{ fontSize: 13, color: "rgba(255,255,255,0.35)", lineHeight: 1.8 }}>
-          Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen.
-        </p>
+        </T>
+      </Block>
+
+      <Block label="Kontakt">
+        <T>E-Mail: joinsignum@gmail.com</T>
+      </Block>
+
+      <Block label="Verantwortlich für den Inhalt (§ 55 Abs. 2 RStV)">
+        <T>Luis Schäfer<br/>Otto-Hahn-Str. 11, 67165 Waldsee</T>
+      </Block>
+
+      <Block label="Haftung für Inhalte">
+        <T small>Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich.</T>
+      </Block>
+
+      <Block label="Haftung für Links">
+        <T small>Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.</T>
+      </Block>
+
+      <Block label="Urheberrecht">
+        <T small>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.</T>
+      </Block>
+
+      <div style={{ padding: "40px 0" }}>
+        <div style={{ fontSize: 10, letterSpacing: "0.25em", textTransform: "uppercase", color: "rgba(255,255,255,0.25)", marginBottom: 16 }}>Hosting</div>
+        <T small>Diese Website wird gehostet von Netlify Inc., 44 Montgomery Street, Suite 300, San Francisco, California 94104, USA. Mit Netlify wurde ein Vertrag zur Auftragsverarbeitung (AVV) geschlossen.</T>
       </div>
     </div>
   );
@@ -249,8 +272,8 @@ const navItems = [
 ];
 
 const socialLinks = [
-  { label: "TikTok", url: "#" },
-  { label: "Instagram", url: "#" },
+  { label: "TikTok", url: "https://www.tiktok.com/@signum478" },
+  { label: "Instagram", url: "https://www.instagram.com/signumsports" },
 ];
 
 export default function SIGNUMApp() {
@@ -441,9 +464,8 @@ export default function SIGNUMApp() {
           <div className="sidebar-social">
             <div className="social-label">Folge uns</div>
             <div className="social-links">
-              {socialLinks.map(s => (
-                <a key={s.label} href={s.url} className="social-link">{s.label}</a>
-              ))}
+              <span className="social-link" onClick={() => window.open('https://www.tiktok.com/@signum478', '_blank')}>TikTok</span>
+              <span className="social-link" onClick={() => window.open('https://www.instagram.com/signumsports', '_blank')}>Instagram</span>
             </div>
           </div>
         </aside>
